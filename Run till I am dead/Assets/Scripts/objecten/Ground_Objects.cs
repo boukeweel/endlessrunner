@@ -18,12 +18,5 @@ public class Ground_Objects : MonoBehaviour
         transform.Translate(0, 0, -speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("EndCube"))
-        {
-            Gm.SpawnGroundObjects(transform.position.y);
-            Destroy(gameObject);
-        }
-    }
+    
 }

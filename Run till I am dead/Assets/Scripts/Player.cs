@@ -8,50 +8,44 @@ public class Player : MonoBehaviour
 
     public int speed;
 
+    public Vector3 targetpos;
+
     
 
     public GameManger Gm;
 
     private void Update()
     {
+        Debug.Log("why no work");
 
-        
-        if (Input.GetKey(KeyCode.A) && transform.position.x > -10)
+
+        transform.position = Vector3.MoveTowards(transform.position, targetpos, speed * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.A) && transform.position.x > -10)
         {
+            
             MoveLeft();
         }
-        if (Input.GetKey(KeyCode.D) && transform.position.x < 10)
+        if (Input.GetKeyDown(KeyCode.D) && transform.position.x < 10)
         {
             MoveRight();
         }
-        if (Input.GetKey(KeyCode.W) && transform.position.y < 7.5f)
-        {
-            MoveUp();
-        }
-        if (Input.GetKey(KeyCode.S) && transform.position.y > -7.5f)
-        {
-            MoveDown();
-        }
+        
 
     }
 
     //movements
     public void MoveLeft()
     {
-        transform.Translate(-move * speed * Time.deltaTime, 0, 0);
+        //transform.Translate(-move, 0, 0);
+        targetpos = new Vector3(transform.position.x - move, transform.position.y, -9.3f);
     }
     public void MoveRight()
     {
-        transform.Translate( move * speed * Time.deltaTime, 0, 0);
+        targetpos = new Vector3(transform.position.x + move, transform.position.y, -9.3f);
+        //transform.Translate( move, 0, 0);
     }
-    public void MoveDown()
-    {
-        transform.Translate(0, 0, move * speed * Time.deltaTime);
-    }
-    public void MoveUp()
-    {
-        transform.Translate(0,0 , -move * speed * Time.deltaTime);
-    }
+    
     private void OnCollisionEnter(Collision collision)
     {
         Gm.Dead();
