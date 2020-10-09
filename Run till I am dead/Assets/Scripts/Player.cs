@@ -14,6 +14,11 @@ public class Player : MonoBehaviour
 
     public GameManger Gm;
 
+    private void Start()
+    {
+        transform.position = targetpos;
+    }
+
     private void Update()
     {
         Debug.Log("why no work");
