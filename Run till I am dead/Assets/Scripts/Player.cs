@@ -26,6 +26,15 @@ public class Player : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, targetpos, speed * Time.deltaTime);
 
+        if(transform.position.x < -10)
+        {
+            transform.position = new Vector3(-10, 0, transform.position.z);
+        }
+        if(transform.position.x > 10)
+        {
+            transform.position = new Vector3(10, 0, transform.position.z);
+        }
+
         if (Input.GetKeyDown(KeyCode.A) && transform.position.x > -10)
         {
             

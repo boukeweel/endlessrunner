@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManger : MonoBehaviour
 {
@@ -17,10 +18,18 @@ public class GameManger : MonoBehaviour
 
     private int count;
 
-    
+    public TMP_Text Text;
+
+    public float points;
 
 
-    
+
+    private void Update()
+    {
+        points += 1 * Time.deltaTime;
+
+        Text.text = points.ToString("0");
+    }
     public void SpawnPlatform()
     {
         //Debug.Log("in Gamemanger");
