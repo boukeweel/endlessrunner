@@ -50,6 +50,6 @@ public class GameManger : MonoBehaviour
 
     public void Dead()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 }
